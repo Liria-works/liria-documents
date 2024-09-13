@@ -1,4 +1,5 @@
 ---
+title: {$params.title}
 editLink: false
 ---
 

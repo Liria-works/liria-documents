@@ -31,10 +31,49 @@ const articlesAvatio = await getArticlesAvatio();
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+    lang: "ja-JP",
+
     title: "Liria Documents",
     description: "Documents of Liria products",
 
-    head: [["link", { rel: "icon", href: "/favicon.svg" }]],
+    head: [
+        ["link", { rel: "icon", href: "/favicon.svg" }],
+        [
+            "meta",
+            {
+                property: "og:url",
+                content: "https://documents.liria.works",
+            },
+        ],
+        [
+            "meta",
+            {
+                property: "og:title",
+                content: "Home",
+            },
+        ],
+        [
+            "meta",
+            {
+                property: "og:description",
+                content: "Documents of Liria products",
+            },
+        ],
+        [
+            "meta",
+            {
+                property: "og:site_name",
+                content: "Liria Documents",
+            },
+        ],
+        [
+            "meta",
+            {
+                property: "og:image",
+                content: "/logo_liria_documents.png",
+            },
+        ],
+    ],
 
     themeConfig: {
         siteTitle: "Liria",
