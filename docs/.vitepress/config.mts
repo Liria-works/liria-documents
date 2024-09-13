@@ -38,7 +38,7 @@ export default defineConfig({
 
     themeConfig: {
         siteTitle: "Liria",
-        logo: "/favicon.svg",
+        logo: { light: "/logo_liria_black.svg", dark: "/logo_liria_white.svg" },
 
         nav: [
             { text: "Liria Graphics", link: "/liria-graphics" },
