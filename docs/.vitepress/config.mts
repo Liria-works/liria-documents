@@ -73,6 +73,20 @@ export default defineConfig({
                 content: "/logo_liria_documents.png",
             },
         ],
+        [
+            "meta",
+            {
+                property: "twitter:card",
+                content: "summary",
+            },
+        ],
+        [
+            "meta",
+            {
+                property: "twitter:site",
+                content: "@Liria_work",
+            },
+        ],
     ],
 
     themeConfig: {
