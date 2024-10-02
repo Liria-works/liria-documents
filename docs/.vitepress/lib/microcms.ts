@@ -18,6 +18,11 @@ export type liriaGraphics = {
         revisedAt: string;
         title: { ja: string; en: string };
         thumbnail: { url: string; width: number; height: number };
+        description: string;
+        contents: any[];
+        details: any[];
+        packages: any[];
+        usage: string;
         booth: number;
         price: number;
         notForSale: boolean;

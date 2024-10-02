@@ -1,3 +1,8 @@
+---
+editLink: false
+---
+
+
 # ライセンス
 
 ここでは Liria Graphics で取り扱う商品のライセンスを記載します。
