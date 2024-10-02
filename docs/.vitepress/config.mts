@@ -1,37 +1,47 @@
 import { loadEnv, defineConfig } from "vitepress";
-import { createClient } from "@supabase/supabase-js";
+// import { createClient } from "@supabase/supabase-js";
+import { getLiriaGraphics } from "./lib/microcms";
 
-const env = loadEnv(".env", process.cwd());
-export const supabase = createClient(
-    env.VITE_SUPABASE_URL,
-    env.VITE_SUPABASE_KEY
-);
+// const env = loadEnv(".env", process.cwd());
+// export const supabase = createClient(
+//     env.VITE_SUPABASE_URL,
+//     env.VITE_SUPABASE_KEY
+// );
 
-async function getArticlesAvatio() {
-    const { data, error } = await supabase
-        .from("articles")
-        .select("slug, category, title, created_at, updated_at, content")
-        .eq("published", true)
-        .eq("category", "permanent")
-        .order("created_at", { ascending: true });
+// async function getArticlesAvatio() {
+//     const { data, error } = await supabase
+//         .from("articles")
+//         .select("slug, category, title, created_at, updated_at, content")
+//         .eq("published", true)
+//         .eq("category", "permanent")
+//         .order("created_at", { ascending: true });
 
-    if (error) {
-        console.error(error);
-        return [];
-    }
-    return data.map((article) => {
-        return {
-            text: article.title,
-            link: `/avatio/${article.slug}`,
-        };
-    });
-}
+//     if (error) {
+//         console.error(error);
+//         return [];
+//     }
+//     return data.map((article) => {
+//         return {
+//             text: article.title,
+//             link: `/avatio/${article.slug}`,
+//         };
+//     });
+// }
 
-const articlesAvatio = await getArticlesAvatio();
+// const articlesAvatio = await getArticlesAvatio();
+
+const { contents } = await getLiriaGraphics();
+const contentsLiriaGraphics = contents.map((content) => {
+    return {
+        text: content.title.ja,
+        link: `/liria-graphics/${content.id}`,
+    };
+});
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
     lang: "ja-JP",
+    cleanUrls: true,
 
     title: "Liria Documents",
     description: "Documents of Liria products",
@@ -102,24 +112,7 @@ export default defineConfig({
             "/liria-graphics": [
                 {
                     text: "アイテム",
-                    items: [
-                        {
-                            text: "キーホルダー",
-                            link: "/liria-graphics/keyholder",
-                        },
-                        {
-                            text: "結晶化した角",
-                            link: "/liria-graphics/crystal-horn",
-                        },
-                        {
-                            text: "架空ロゴパック",
-                            link: "/liria-graphics/logo-pack",
-                        },
-                        {
-                            text: "チャームチョーカー",
-                            link: "/liria-graphics/charm-choker",
-                        },
-                    ],
+                    items: contentsLiriaGraphics,
                 },
                 {
                     text: "ライセンス",
@@ -142,7 +135,7 @@ export default defineConfig({
             "/avatio": [
                 {
                     text: "Avatio",
-                    items: articlesAvatio,
+                    items: contentsLiriaGraphics,
                 },
             ],
         },
