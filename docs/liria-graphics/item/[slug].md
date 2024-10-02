@@ -2,3 +2,5 @@
 ---
 
 # {{ $params.title }}
+
+<!-- @content -->

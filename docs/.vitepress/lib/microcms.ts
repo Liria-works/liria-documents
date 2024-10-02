@@ -5,8 +5,8 @@ import { createClient } from "microcms-js-sdk";
 const env = loadEnv(".env", process.cwd());
 
 const client = createClient({
-    serviceDomain: env.MICROCMS_SERVICE_DOMAIN,
-    apiKey: env.MICROCMS_API_KEY,
+    serviceDomain: env.VITE_MICROCMS_SERVICE_DOMAIN,
+    apiKey: env.VITE_MICROCMS_API_KEY,
 });
 
 export type liriaGraphics = {

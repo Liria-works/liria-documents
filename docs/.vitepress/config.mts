@@ -1,40 +1,11 @@
-import { loadEnv, defineConfig } from "vitepress";
-// import { createClient } from "@supabase/supabase-js";
+import { defineConfig } from "vitepress";
 import { getLiriaGraphics } from "./lib/microcms";
-
-// const env = loadEnv(".env", process.cwd());
-// export const supabase = createClient(
-//     env.VITE_SUPABASE_URL,
-//     env.VITE_SUPABASE_KEY
-// );
-
-// async function getArticlesAvatio() {
-//     const { data, error } = await supabase
-//         .from("articles")
-//         .select("slug, category, title, created_at, updated_at, content")
-//         .eq("published", true)
-//         .eq("category", "permanent")
-//         .order("created_at", { ascending: true });
-
-//     if (error) {
-//         console.error(error);
-//         return [];
-//     }
-//     return data.map((article) => {
-//         return {
-//             text: article.title,
-//             link: `/avatio/${article.slug}`,
-//         };
-//     });
-// }
-
-// const articlesAvatio = await getArticlesAvatio();
 
 const { contents } = await getLiriaGraphics();
 const contentsLiriaGraphics = contents.map((content) => {
     return {
         text: content.title.ja,
-        link: `/liria-graphics/${content.id}`,
+        link: `/liria-graphics/item/${content.id}`,
     };
 });
 
